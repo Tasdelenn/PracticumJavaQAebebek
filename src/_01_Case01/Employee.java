@@ -17,7 +17,7 @@ public class Employee {
         double tax = 0;
         if (formalSalary > 1000)
             tax = formalSalary * 3 / 100;
-        return -tax;
+        return tax;
     }
 
     private int bonus(int formalWorkHours) {
@@ -40,27 +40,22 @@ public class Employee {
         else
             raiseRate = 0.15;
 
-        raiseSalary = raiseRate * salary + bonus(workHours) + tax(salary);
+        raiseSalary = raiseRate * salary ;
         return raiseSalary;
     }
 
     @Override
     public String toString() {
         return "*****************************************************************************\n" +
-                "Employee{" +
-                "name='" + name + '\'' +
-                ", salary=" + salary + " TL" +
-                ", workHours=" + workHours + " Hours" +
-                ", hireYear=" + hireYear +
-                '}' + "\n" +
-                "Bonus : " + bonus(workHours) + " TL" +"\n" +
-                "Total Salary : " + (salary + bonus(workHours)) + " TL" + "\n" +
-                "--------------------------------------------------" + "\n" +
-                "Tax : " + tax(salary) + " TL" +"\n" +
-                "Raise Salary (including bonus and tax) : " + raiseSalary(hireYear) + " TL" +"\n" +
-                "--------------------------------------------------" + "\n" +
-                "Salary after tax and bonus is : " + (salary + raiseSalary(hireYear)) + " TL" + "\n"
+                "ADI : " + name + "\n" +
+                "MAAŞI : " + salary + " TL" + "\n" +
+                "HAFTALIK ÇALIŞMA SAATİ : " + workHours + " Hours" + "\n" +
+                "BAŞLANGIÇ YILI : " + hireYear + "\n" +
+                "VERGİ : " + tax(salary) + " TL" + "\n" +
+                "BONUS : " + bonus(workHours) + " TL" + "\n" +
+                "MAAŞ ARTIŞI : " + raiseSalary(hireYear) + " TL" + "\n" +
+                "VERGİ VE BONUS UYGULANDIKTAN SONRA MAAŞ : " + (salary + bonus(workHours) - tax(salary)) + " TL" + "\n" +
+                "TOPLAM MAAŞ : " + (salary + bonus(workHours) - tax(salary) + raiseSalary(hireYear)) + " TL" + "\n"
                 ;
-
     }
 }
